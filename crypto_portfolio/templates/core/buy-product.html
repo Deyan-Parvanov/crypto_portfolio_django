@@ -1,0 +1,45 @@
+{% load placeholders %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <title>Buy Crypto</title>
+    <link rel="stylesheet" href="{% static 'styles/login.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+
+        <h1><a class="home" href="{% url 'index' %}">Crypto Portfolio</a></h1>
+        <nav>
+
+            {% if request.user.is_authenticated and not request.user.is_superuser %}
+                <a href="{% url 'products' %}">Products</a>
+                <a href="{% url 'dashboard' %}">My Portfolio</a>
+                <a href="{% url 'details user' pk=user.pk %}">Profile</a>
+                <a href="{% url 'logout user' %}">Sign Out</a>
+            {% elif request.user.is_superuser %}
+                <a href="{% url 'products' %}">Products</a>
+                <a href="{% url 'add product' %}">Add Product</a>
+                <a href="{% url 'details user' pk=user.pk %}">Profile</a>
+                <a href="{% url 'logout user' %}">Sign Out</a>
+            {% endif %}
+        </nav>
+    </header>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form method="post" action="{% url 'buy crypto' pk=product.pk %}">
+        <h3>Buy Crypto</h3>
+
+        {{ form }}
+
+        <button type="submit">Confirm purchase</button>
+        {% csrf_token %}
+
+    </form>
+</body>
+</html>

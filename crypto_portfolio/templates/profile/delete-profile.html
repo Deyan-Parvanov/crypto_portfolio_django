@@ -1,0 +1,70 @@
+{#{% extends 'core/home-page.html' %}#}
+{#{% load static %}#}
+{#{% block content %}#}
+{##}
+{#<section id="create-page" class="auth">#}
+{#    <div class="container">#}
+{#        <h1>Are you sure you want to delete your profile?</h1>#}
+{##}
+{#        <!-- delete profile form -->#}
+{#        <form id='delete' method="post">#}
+{#            {{ form }}#}
+{#            {% csrf_token %}#}
+{#            <!-- confirm button -->#}
+{#            <input class="btn submit" type="submit" value="Delete">#}
+{#        </form>#}
+{#        <!-- end delete profile form -->#}
+{##}
+{#    </div>#}
+{#</section>#}
+{#{% endblock %}#}
+
+
+{% load placeholders %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="">
+<head>
+	<title>Delete Profile</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'styles/delete-profile.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1><a class="home" href="{% url 'index' %}">Crypto Portfolio</a></h1>
+        <nav>
+            {% if request.user.is_authenticated and not request.user.is_superuser %}
+                <a href="{% url 'products' %}">Products</a>
+                <a href="{% url 'dashboard' %}">My Portfolio</a>
+                <a href="{% url 'details user' pk=user.pk %}">Profile</a>
+                <a href="{% url 'logout user' %}">Sign Out</a>
+            {% elif request.user.is_superuser %}
+                <a href="{% url 'products' %}">Products</a>
+                <a href="{% url 'add product' %}">Add Product</a>
+                <a href="{% url 'details user' pk=user.pk %}">Profile</a>
+                <a href="{% url 'logout user' %}">Sign Out</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <div class="main">
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form method="post">
+                    <label for="chk" aria-hidden="true">Are you sure you want to delete your profile?</label>
+{#                    {{ form.first_name }}#}
+{#                    {{ form.last_name }}#}
+{#                    {{ form.email }}#}
+{#                    {{ form.age }}#}
+{#                    {{ form.profile_picture}}#}
+					<button type="submit">Yes</button>
+                    {% csrf_token %}
+				</form>
+			</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+{% load static %}
+{#{% extends 'core/home-page.html' %}#}
+{#{% load static %}#}
+{#{% block content %}#}
+{##}
+{#    <!-- details section -->#}
+{#    <section id="game-details">#}
+{#        <h1>Coin Details</h1>#}
+{#        <div class="info-section">#}
+{#            <div class="game-header">#}
+{#                <!-- game image -->#}
+{#                <img class="game-img"#}
+{#                     src="{{ coin.coin_photo }}"#}
+{#                     alt='game image'/>#}
+{#                <!-- title and rating -->#}
+{#                <h1>{{ coin.coin_name }} <span class="levels">Price: {{ coin.coin_price }}</span></h1>#}
+{#                <!-- game category -->#}
+{#                <p><span class="type">Market Cap: {{ coin.coin_market_cap }}</span></p>#}
+{#                <!-- game max level (if any) -->#}
+{#                {% if coin.coin_volume %}#}
+{#                    <p><span class="type">Volume: {{ coin.coin_volume }}</span></p>#}
+{#                {% endif %}#}
+{#            </div>#}
+{#            <!-- game summary (if any)-->#}
+{#            {% if game.summary %}#}
+{#                <p class="text">#}
+{#                    {{ game.summary }}#}
+{#                </p>#}
+{#            {% endif %}#}
+{##}
+{#            <!-- Edit/Delete buttons -->#}
+{#            {% if is_owner %}#}
+{#                <div class="buttons">#}
+{#                    <a href="{% url 'edit coin' username=user.username coin_slug=coin.slug %}" class="button">Edit</a>#}
+{#                    <a href="{% url 'delete coin' username=user.username coin_slug=coin.slug %}" class="button">Delete</a>#}
+    {#                {% url 'delete coin' pk=coin.pk %}#}
+{#                </div>#}
+{#            {% endif %}#}
+{#        </div>#}
+{#    </section>#}
+{#{% endblock %}#}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/coin-profile-details.css' %}">
+
+    <title>Coin Details</title>
+
+</head>
+
+<body>
+    <header>
+        <h1><a class="home" href="{% url 'index' %}">Crypto Portfolio</a></h1>
+        <nav>
+            {% if request.user.is_authenticated and not request.user.is_superuser %}
+                <a href="{% url 'products' %}">Products</a>
+                <a href="{% url 'products' %}">My Portfolio</a>
+                <a href="{% url 'details user' pk=user.pk %}">Profile</a>
+                <a href="{% url 'logout user' %}">Sign Out</a>
+            {% elif request.user.is_superuser %}
+                <a href="{% url 'products' %}">Products</a>
+                <a href="{% url 'add product' %}">Add Product</a>
+                <a href="{% url 'details user' pk=user.pk %}">Profile</a>
+                <a href="{% url 'logout user' %}">Sign Out</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <div class="card">
+      <div class="photo">
+        <img src="{{ product.photo }}" alt="{{ product.coin_name }}">
+      </div>
+      <div class="description">
+        <h2>{{ product.name }}</h2>
+        <h4>User : {{ product.product_user }}</h4>
+        <h3>Category : {{ category }}</h3>
+        <h1>Price : {{ product.price }}</h1>
+          <h1>Market Cap : {{ product.market_cap }}</h1>
+          <h1>Volume : {{ product.volume }}</h1>
+        <p></p>
+          {% if request.user.is_superuser %}
+            <button type="submit" onclick="location.href='{% url 'edit product' username=user.username product_slug=product.slug %}'">Edit</button>
+            <button type="submit" onclick="location.href='{% url 'delete product' username=user.username product_slug=product.slug %}'">Delete</button>
+          {% else %}
+            <button type="submit" onclick="location.href='{% url 'buy crypto' pk=product.pk %}'">Buy</button>
+          {% endif %}
+      </div>
+    </div>
+</body>
+
+</html>
+

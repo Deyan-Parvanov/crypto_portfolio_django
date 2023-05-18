@@ -1,0 +1,16 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyInterpreterInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="my_solution_project.section.Task" />
+          <option value="my_solution_project.main.Task" />
+          <option value="my_solution_project.main.Section" />
+          <option value="my_project.band.Album" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

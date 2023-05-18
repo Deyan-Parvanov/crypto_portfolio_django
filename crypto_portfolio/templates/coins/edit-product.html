@@ -1,0 +1,64 @@
+{#{% extends 'core/home-page.html' %}#}
+{#{% load static %}#}
+{#{% block content %}#}
+{#    #}
+{#    <section id="create-page" class="auth">#}
+{#        <form id="create" method="post">#}
+{#            <div class="container">#}
+{#                <h1>Edit Game</h1>#}
+{#                #}
+{#                {{ form }}#}
+{#                #}
+{#                {% csrf_token %}#}
+{#                #}
+{#                <input class="btn submit" type="submit" value="Edit Game">#}
+{#            </div>#}
+{#        </form>#}
+{#    </section>#}
+{#    #}
+{#{% endblock %}#}
+{% load static %}
+<html lang="en">
+<head>
+    <title>Edit Crypto</title>
+    <link rel="stylesheet" href="{% static 'styles/login.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+
+        <h1><a class="home" href="{% url 'index' %}">Crypto Portfolio</a></h1>
+        <nav>
+
+            {% if request.user.is_authenticated and not request.user.is_superuser %}
+                <a href="{% url 'products' %}">My Portfolio</a>
+                <a href="{% url 'details user' pk=user.pk %}">Profile</a>
+                <a href="{% url 'logout user' %}">Sign Out</a>
+            {% elif request.user.is_superuser %}
+                <a href="{% url 'products' %}">Products</a>
+                <a href="{% url 'add product' %}">Add Product</a>
+                <a href="{% url 'details user' pk=user.pk %}">Profile</a>
+                <a href="{% url 'logout user' %}">Sign Out</a>
+            {% else %}
+                <a href="{% url 'login user' %}">Sign In</a>
+                <a href="{% url 'create profile' %}">Create Profile</a>
+            {% endif %}
+        </nav>
+    </header>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form method="post">
+        <h3>Edit Crypto</h3>
+
+        {{ form }}
+
+        <button type="submit">Edit</button>
+        {% csrf_token %}
+
+    </form>
+</body>
+</html>

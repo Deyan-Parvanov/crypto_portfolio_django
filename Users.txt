@@ -1,0 +1,14 @@
+Superuser:
+Username: deyan_admin
+Email: deyan@abv.com
+Password: Admindeyan123
+
+User1:
+Username: deyan_user_1
+Email: deyan_1@abv.bg
+Password: deo11Deo22
+
+User2:
+Username: deyan_user_2
+Email: deyan_2@abv.bg
+Password: deo11Deo33

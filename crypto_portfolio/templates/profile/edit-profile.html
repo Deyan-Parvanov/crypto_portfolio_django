@@ -1,0 +1,68 @@
+{#{% extends 'core/home-page.html' %}#}
+{#{% load static %}#}
+{#{% block content %}#}
+{##}
+{#    <!-- edit profile section -->#}
+{#    <section id="register-page" class="content auth">#}
+{#        <!-- edit profile form -->#}
+{#        <form id="register" method="post">#}
+{#            <div class="container">#}
+{#                <!-- Edit Profile paragraph -->#}
+{#                <h1>Edit Profile</h1>#}
+{#                {{ form }}#}
+{#                {% csrf_token %}#}
+{#                <!-- edit profile button -->#}
+{#                <input class="btn submit" type="submit" value="Edit Profile">#}
+{#            </div>#}
+{#        </form>#}
+{#    </section>#}
+{#{% endblock %}#}
+
+{% load placeholders %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="">
+<head>
+	<title>Sign Up</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'styles/login-register-edit-profile.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1><a class="home" href="{% url 'index' %}">Crypto Portfolio</a></h1>
+        <nav>
+            {% if request.user.is_authenticated and not request.user.is_superuser %}
+                <a href="{% url 'products' %}">Products</a>
+                <a href="{% url 'dashboard' %}">My Portfolio</a>
+                <a href="{% url 'details user' pk=user.pk %}">Profile</a>
+                <a href="{% url 'logout user' %}">Sign Out</a>
+            {% elif request.user.is_superuser %}
+                <a href="{% url 'products' %}">Products</a>
+                <a href="{% url 'add product' %}">Add Product</a>
+                <a href="{% url 'details user' pk=user.pk %}">Profile</a>
+                <a href="{% url 'logout user' %}">Sign Out</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <div class="main">
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form method="post">
+                    <label for="chk" aria-hidden="true">Edit</label>
+                    {{ form.first_name }}
+                    {{ form.last_name }}
+                    {{ form.email }}
+                    {{ form.age }}
+                    {{ form.profile_picture}}
+					<button type="submit">Edit</button>
+                    {% csrf_token %}
+				</form>
+			</div>
+	</div>
+
+</body>
+</html>

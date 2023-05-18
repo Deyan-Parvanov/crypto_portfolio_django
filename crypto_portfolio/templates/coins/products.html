@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/product_card.css' %}">
+
+    <title>My Portfolio</title>
+</head>
+
+<body>
+    <header>
+        <h1><a class="home" href="{% url 'index' %}">Crypto Portfolio</a></h1>
+        <nav>
+            {% if request.user.is_authenticated and not request.user.is_superuser %}
+                <a href="{% url 'products' %}">Products</a>
+                <a href="{% url 'dashboard' %}">My Portfolio</a>
+                <a href="{% url 'details user' pk=user.pk %}">Profile</a>
+                <a href="{% url 'logout user' %}">Sign Out</a>
+            {% elif request.user.is_superuser %}
+                <a href="{% url 'products' %}">Products</a>
+                <a href="{% url 'add product' %}">Add Product</a>
+                <a href="{% url 'details user' pk=user.pk %}">Profile</a>
+                <a href="{% url 'logout user' %}">Sign Out</a>
+            {% else %}
+                <a href="{% url 'login user' %}">Sign In</a>
+                <a href="{% url 'create profile' %}">Create Profile</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    {% for product in products %}
+        <div class="container">
+            <div class="card">
+                <div class="contentBx">
+                    <h2>{{ product.name }}</h2>
+                    <div class="size">
+                        <img src="{{ product.photo }}" alt="{{ product.name }}">
+                    </div>
+                    <div class="size">
+                        <h3>Price : {{ product.price }} </h3>
+                    </div>
+                    <a href="{% url 'details product' username=product.product_user product_slug=product.slug %}">Details</a>
+                </div>
+
+            </div>
+        </div>
+    {% endfor %}
+</body>
+
+</html>
