@@ -8,7 +8,7 @@ Username: deyan_user_1
 Email: deyan_1@abv.bg
 Password: deo11Deo22
 
-User2:
+User2 - staff:
 Username: deyan_user_2
 Email: deyan_2@abv.bg
 Password: deo11Deo33
