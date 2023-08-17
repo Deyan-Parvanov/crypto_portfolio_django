@@ -6,7 +6,11 @@ from crypto_portfolio.products.model_products import Products
 
 @admin.register(Products)
 class CoinAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('name', 'price', 'category', 'slug',)
+    list_filter = ('price', 'name', 'category',)
+    ordering = ('name',)
+    search_fields = ('name', 'product_user',)
+    readonly_fields = ('slug',)
 
 
 @admin.register(Category)

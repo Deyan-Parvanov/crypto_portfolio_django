@@ -42,7 +42,9 @@
                     <div class="size">
                         <h3>Price : {{ product.price }} </h3>
                     </div>
+                    {% if request.user.is_authenticated %}
                     <a href="{% url 'details product' username=product.product_user product_slug=product.slug %}">Details</a>
+                    {% endif %}
                 </div>
 
             </div>

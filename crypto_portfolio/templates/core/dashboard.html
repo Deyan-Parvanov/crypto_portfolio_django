@@ -98,30 +98,18 @@
         </nav>
     </header>
 
-    {% for coin in coins %}
+    {% for crypto in unique_products %}
         <div class="container">
             <div class="card">
-
-{#                <div class="imgBx">#}
-{#                    <img src="http://pngimg.com/uploads/running_shoes/running_shoes_PNG5782.png" alt="nike-air-shoe">#}
-{#                </div>#}
-
                 <div class="contentBx">
-
-                    <h2>{{ coin.coin_name }}</h2>
-
+                    <h2>{{ crypto.crypto_name }}</h2>
                     <div class="size">
-                        <img src="{{ coin.coin_photo }}" alt="{{ coin.coin_name }}">
+                        <img src="{{ crypto.crypto_photo }}" alt="{{ crypto.crypto_name }}">
                     </div>
-
                     <div class="size">
-                        <h3>Price : {{ coin.coin_price }} </h3>
+                        <h3>Price : {{ total_price }} </h3>
                     </div>
-
-{#                    <div class="color">#}
-{#                        <h3>Color : {{  }}</h3>#}
-{#                    </div>#}
-                    <a href="{% url 'details coin' username=coin.coin_user coin_slug=coin.slug %}">Details</a>
+{#                    <a href="{% url 'details coin' username=crypto.user coin_slug=crypto.slug %}">Details</a>#}
                 </div>
 
             </div>

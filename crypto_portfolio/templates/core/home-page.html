@@ -29,6 +29,7 @@
                 <a href="{% url 'details user' pk=user.pk %}">Profile</a>
                 <a href="{% url 'logout user' %}">Sign Out</a>
             {% else %}
+                <a href="{% url 'products' %}">Products</a>
                 <a href="{% url 'login user' %}">Sign In</a>
                 <a href="{% url 'create profile' %}">Create Profile</a>
             {% endif %}
@@ -47,7 +48,7 @@
 
     <!-- footer -->
     <footer>
-        TODO
+        Created by Deyan Parvanov
     </footer>
 
 </div>

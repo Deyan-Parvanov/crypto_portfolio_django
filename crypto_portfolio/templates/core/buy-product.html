@@ -8,6 +8,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <script>
+        function fillQuantity() {
+            document.getElementById("order_quantity").value = document.getElementById("id_quantity").value;
+        }
+    </script>
+    <script>
+        function calculateTotal() {
+            let quantity_element = document.getElementById("id_quantity").value
+            let price = document.getElementById("id_price").value
+            if (quantity_element) {
+                document.getElementById("id_total").value = price * quantity_element
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -34,10 +48,36 @@
     </div>
     <form method="post" action="{% url 'buy crypto' pk=product.pk %}">
         <h3>Buy Crypto</h3>
+        {{ portfolio_form }}
+        {{ order_form }}
+{#        <label for="id_name">Product:</label>#}
+{#        <input id="id_name" type="text" name="name" value="{{ portfolio_form.crypto_name }}" maxlength="30" required="">#}
+{#        {{ portfolio_form.crypto_name }}#}
+{#        <label for="id_name">Photo:</label>#}
+{#        <input id="id_name" type="text" name="name" value="{{ portfolio_form.instance.photo }}" maxlength="" required="">#}
+{#        {{ portfolio_form.crypto_photo }}#}
+{#        <label for="id_name">Price:</label>#}
+{#        {{ portfolio_form.crypto_price }}#}
+{#        <label for="id_name">Market Cap:</label>#}
+{#        {{ portfolio_form.crypto_market_cap }}#}
+{#        <label for="id_name">Volume:</label>#}
+{#        {{ portfolio_form.crypto_volume }}#}
+{#        <label for="id_name">Quantity:</label>#}
+{#        {{ portfolio_form.quantity }}#}
+{#        <label for="id_name">User:</label>#}
+{#        {{ portfolio_form.crypto_user }}#}
 
-        {{ form }}
-
-        <button type="submit">Confirm purchase</button>
+{#        <label for="id_name">Product:</label>#}
+{#        {{ order_form.product }}#}
+{#        <label for="id_name">Customer:</label>#}
+{#        {{ order_form.customer }}#}
+{#        <label for="id_name">Quantity:</label>#}
+{#        {{ order_form.quantity }}#}
+{##}
+        <label for="id_name">Total:</label>
+        <input id="id_total" oninput="calculateTotal()" style="color: white">
+{##}
+        <button type="submit" onclick="fillQuantity()">Confirm purchase</button>
         {% csrf_token %}
 
     </form>

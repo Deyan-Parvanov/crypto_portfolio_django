@@ -21,6 +21,7 @@ class Order(models.Model):
 
     quantity = models.IntegerField(
         default=1,
+        db_column='order_quantity',
     )
 
     date = models.DateField(
@@ -31,12 +32,24 @@ class Order(models.Model):
         default=False,
     )
 
+    transaction_id = models.CharField(
+        max_length=200,
+        null=True,
+    )
+
     def place_order(self):
         self.save()
 
     @staticmethod
     def get_orders_by_customer(customer_id):
         return Order.objects.filter(customer=customer_id).order_by('-date')
+
+
+class OrderCrypto(models.Model):
+    product = models.ForeignKey(Products, on_delete=models.SET_NULL, null=True)
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+    quantity = models.IntegerField(default=0, null=True, blank=True)
+    date_added = models.DateTimeField(auto_now_add=True)
 
 
 class UserPortfolio(models.Model):
@@ -88,3 +101,7 @@ class UserPortfolio(models.Model):
         null=True,
         blank=True,
     )
+
+    @staticmethod
+    def get_products_by_user(ids):
+        return UserPortfolio.objects.filter(crypto_user=ids)

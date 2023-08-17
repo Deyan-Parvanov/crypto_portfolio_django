@@ -1,6 +1,12 @@
 from django.contrib.auth import models as auth_models
-from django.core import validators
+from django.core import validators, exceptions
 from django.db import models
+
+
+def names_only_letters(value):
+    for ch in value:
+        if not ch.isalpha():
+            raise exceptions.ValidationError("The name must contain only letters!")
 
 
 class AppUser(auth_models.AbstractUser):
@@ -12,6 +18,7 @@ class AppUser(auth_models.AbstractUser):
         max_length=30,
         validators=(
             validators.MinLengthValidator(MIN_LEN_FIRST_NAME),
+            names_only_letters,
         )
     )
 
@@ -19,6 +26,7 @@ class AppUser(auth_models.AbstractUser):
         max_length=30,
         validators=(
             validators.MinLengthValidator(MIN_LEN_LAST_NAME),
+            names_only_letters,
         )
     )
 

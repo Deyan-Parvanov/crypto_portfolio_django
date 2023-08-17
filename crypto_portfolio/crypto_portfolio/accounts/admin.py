@@ -11,6 +11,9 @@ UserModel = get_user_model()
 class UserAdmin(auth_admin.UserAdmin):
     form = UserChangeForm
     add_form = UserCreateForm
+    list_display = ('first_name', 'last_name', 'email',)
+    ordering = ('first_name',)
+    search_fields = ('first_name', 'last_name',)
 
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
