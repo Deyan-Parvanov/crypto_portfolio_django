@@ -56,16 +56,6 @@ def edit_product(request, username, product_slug):
 
     return render(request, 'coins/edit-product.html', context)
 
-# class CoinEdit(views.UpdateView):
-#     template_name = 'products/edit-product.html'
-#     model = Coins
-#     fields = ('coin_name', 'coin_photo', 'coin_price', 'coin_market_cap', 'coin_volume', 'coin_user')
-
-    # def get_success_url(self):
-    #     return reverse_lazy('details coin', kwargs={
-    #         'pk': self.request.user.pk,
-    #     })
-
 
 def delete_product(request, username, product_slug):
     product = get_product_by_name_and_username(product_slug, username)

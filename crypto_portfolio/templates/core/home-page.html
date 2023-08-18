@@ -13,11 +13,9 @@
 <div id="box">
     <header>
 
-        <!-- Navigation Bar -->
         <h1><a class="home" href="{% url 'index' %}">Crypto Portfolio</a></h1>
         <nav>
 
-            <!-- if the user has not created a profile -->
             {% if request.user.is_authenticated and not request.user.is_superuser %}
                 <a href="{% url 'products' %}">Products</a>
                 <a href="{% url 'dashboard' %}">My Portfolio</a>
@@ -35,18 +33,10 @@
             {% endif %}
         </nav>
     </header>
+
     {% block content %}
     {% endblock %}
-    <!-- headlines and default image -->
-{#    <section id="welcome-world">#}
-{#        <div class="welcome-message">#}
-{#            <h2>ALL new games are</h2>#}
-{#            <h3>Only in GamesPlay</h3>#}
-{#        </div>#}
-{#        <img src="{% static '/images/four_slider_img01.png' %}" alt="hero">#}
-{#    </section>#}
 
-    <!-- footer -->
     <footer>
         Created by Deyan Parvanov
     </footer>

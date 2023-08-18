@@ -7,5 +7,3 @@ urlpatterns = (
     path('dashboard', dashboard, name='dashboard'),
     path('buy/<int:pk>', buy_crypto, name='buy crypto'),
 )
-
-# <int:pk>/<slug:product_slug>/

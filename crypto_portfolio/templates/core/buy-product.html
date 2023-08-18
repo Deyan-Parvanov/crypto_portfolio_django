@@ -50,33 +50,10 @@
         <h3>Buy Crypto</h3>
         {{ portfolio_form }}
         {{ order_form }}
-{#        <label for="id_name">Product:</label>#}
-{#        <input id="id_name" type="text" name="name" value="{{ portfolio_form.crypto_name }}" maxlength="30" required="">#}
-{#        {{ portfolio_form.crypto_name }}#}
-{#        <label for="id_name">Photo:</label>#}
-{#        <input id="id_name" type="text" name="name" value="{{ portfolio_form.instance.photo }}" maxlength="" required="">#}
-{#        {{ portfolio_form.crypto_photo }}#}
-{#        <label for="id_name">Price:</label>#}
-{#        {{ portfolio_form.crypto_price }}#}
-{#        <label for="id_name">Market Cap:</label>#}
-{#        {{ portfolio_form.crypto_market_cap }}#}
-{#        <label for="id_name">Volume:</label>#}
-{#        {{ portfolio_form.crypto_volume }}#}
-{#        <label for="id_name">Quantity:</label>#}
-{#        {{ portfolio_form.quantity }}#}
-{#        <label for="id_name">User:</label>#}
-{#        {{ portfolio_form.crypto_user }}#}
 
-{#        <label for="id_name">Product:</label>#}
-{#        {{ order_form.product }}#}
-{#        <label for="id_name">Customer:</label>#}
-{#        {{ order_form.customer }}#}
-{#        <label for="id_name">Quantity:</label>#}
-{#        {{ order_form.quantity }}#}
-{##}
         <label for="id_name">Total:</label>
         <input id="id_total" oninput="calculateTotal()" style="color: white">
-{##}
+
         <button type="submit" onclick="fillQuantity()">Confirm purchase</button>
         {% csrf_token %}
 

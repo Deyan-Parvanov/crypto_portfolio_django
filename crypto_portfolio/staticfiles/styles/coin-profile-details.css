@@ -29,16 +29,6 @@ button:hover {
   box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-/*nav {*/
-
-/*    width: 100%;*/
-/*    color: #727272;*/
-/*    text-transform: uppercase;*/
-/*    padding: 20px;*/
-/*    border-bottom: 2px solid #efefef;*/
-/*    font-size: 12px;*/
-/*}*/
-
 .auth {
     width: 100px;
     margin: 3em auto;
@@ -101,31 +91,6 @@ nav a:hover {
 .home:hover {
     color: #5dade2;
 }
-
-
-/*svg.heart {*/
-/*  height: 24px;*/
-/*  width: 24px;*/
-/*  float: right;*/
-/*  margin-top: -3px;*/
-/*  transition: all 0.3s ease;*/
-/*  cursor: pointer;*/
-/*}*/
-
-/*:hover {*/
-
-/*  fill: red;*/
-
-/*}*/
-
-/*svg.arrow {*/
-
-/*float: left;*/
-/*height: 15px;*/
-/*width: 15px;*/
-/*margin-right: 10px;*/
-
-/*}*/
 
 .photo {
 

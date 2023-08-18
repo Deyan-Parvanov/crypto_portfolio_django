@@ -1,23 +1,3 @@
-{#{% extends 'core/home-page.html' %}#}
-{#{% load static %}#}
-{#{% block content %}#}
-{##}
-{#    <section id="create-page" class="auth">#}
-{#        <form id="create" method="post">#}
-{#            <div class="container">#}
-{#                <h1>Add Coin</h1>#}
-{##}
-{#                {{ form }}#}
-{#                #}
-{#                {% csrf_token %}#}
-{##}
-{#                <input class="btn submit" type="submit" value="Add Coin">#}
-{#            </div>#}
-{#        </form>#}
-{#    </section>#}
-{##}
-{#{% endblock %}#}
-
 {% load placeholders %}
 {% load static %}
 
@@ -32,13 +12,10 @@
 <body>
     <header>
 
-        <!-- Navigation Bar -->
         <h1><a class="home" href="{% url 'index' %}">Crypto Portfolio</a></h1>
         <nav>
 
-            <!-- if the user has not created a profile -->
             {% if request.user.is_authenticated and not request.user.is_superuser %}
-                <!-- if the user has created a profile -->
                 <a href="{% url 'dashboard' %}">My Portfolio</a>
                 <a href="{% url 'details user' pk=user.pk %}">Profile</a>
                 <a href="{% url 'logout user' %}">Sign Out</a>

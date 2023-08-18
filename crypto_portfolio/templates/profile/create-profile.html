@@ -1,27 +1,5 @@
 {% load placeholders %}
 {% load static %}
-{#{% extends 'core/home-page.html' %}#}
-{#{% load static %}#}
-{#{% load placeholders %}#}
-{#{% block content %}#}
-{##}
-{#    <section id="register-page" class="content auth">#}
-{#        <form method="post">#}
-{#            <div class="container">#}
-{#                <div class="brand-logo"></div>#}
-{#                <h1>Create Profile</h1>#}
-{#                {{ form.username|placeholder:'Username:' }}#}
-{#                {{ form.email|placeholder:'Email:' }}#}
-{#                {{ form.password1|placeholder:'Password:' }}#}
-{#                {{ form.password2|placeholder:'Repeat password:' }}#}
-{#                {{ form.age|placeholder:'Age:' }}#}
-{#                <input class="btn submit" type="submit" value="Create Profile">#}
-{#                {% csrf_token %}#}
-{#            </div>#}
-{#        </form>#}
-{#    </section>#}
-{##}
-{#{% endblock %}#}
 <!DOCTYPE html>
 <html lang="">
 <head>
@@ -61,23 +39,10 @@
                     {{ form.password1|placeholder:'Password:' }}
                     {{ form.password2|placeholder:'Repeat password:' }}
                     {{ form.age|placeholder:'Age:' }}
-{#					<label for="chk" aria-hidden="true">Sign up</label>#}
-{#					<input type="text" name="txt" placeholder="User name" required="">#}
-{#					<input type="email" name="email" placeholder="Email" required="">#}
-{#					<input type="password" name="pswd" placeholder="Password" required="">#}
 					<button type="submit">Sign up</button>
                     {% csrf_token %}
 				</form>
 			</div>
-
-{#			<div class="login">#}
-{#				<form>#}
-{#					<label for="chk" aria-hidden="true">Login</label>#}
-{#					<input type="email" name="email" placeholder="Email" required="">#}
-{#					<input type="password" name="pswd" placeholder="Password" required="">#}
-{#					<button>Login</button>#}
-{#				</form>#}
-{#			</div>#}
 	</div>
 
 </body>

@@ -3,6 +3,7 @@ from django.views import generic as views
 from django.contrib.auth import views as auth_view, get_user_model
 
 from crypto_portfolio.accounts.forms import UserCreateForm
+from crypto_portfolio.common.models import UserPortfolio
 
 UserModel = get_user_model()
 
@@ -17,11 +18,6 @@ class SignUpView(views.CreateView):
     form_class = UserCreateForm
     success_url = reverse_lazy('index')
 
-    # def post(self, request, *args, **kwargs):
-    #     response = super().post(request, *args, **kwargs)
-    #     login(request, self.object)
-    #     return response
-
 
 class SignOutView(auth_view.LogoutView):
     next_page = reverse_lazy('index')
@@ -33,9 +29,11 @@ class UserDetailsView(views.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
+        user_products = UserPortfolio.objects.count()
+        total_value = sum([crypto.crypto_price for crypto in UserPortfolio.objects.all()])
         context['user'] = self.request.user == self.object
-        context['products_count'] = self.object.products_set.count()
+        context['products_count'] = user_products
+        context['total_portfolio_value'] = total_value
 
         return context
 

@@ -79,15 +79,6 @@ DATABASES = {
     }
 }
 
-# postgres
-# 'NAME': 'crypto_portfolio_db',
-# 'USER': 'deyanparvanov',
-# 'PASSWORD': 'denkata',
-
-# 'NAME': 'postgres',
-# 'USER': 'postgres-user',
-# 'PASSWORD': 'password',
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
